@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aplicação de gerenciamento de tarefas desenvolvida para teste técnico.">
+  <title>Minhas tarefas</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark">✓</div>
+      <div>
+        <strong>Minhas tarefas</strong>
+        <span>Organize seu dia</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">TO-DO LIST</p>
+        <h1>Organize suas tarefas</h1>
+        <p class="hero-text">Crie, acompanhe, pesquise e gerencie suas tarefas em um só lugar.</p>
+      </div>
+      <div class="summary-card">
+        <span>Total</span>
+        <strong id="task-count">0</strong>
+      </div>
+    </section>
+
+    <section class="panel form-panel">
+      <div class="panel-heading">
+        <div>
+          <h2 id="form-title">Nova tarefa</h2>
+          <p>Preencha os dados abaixo.</p>
+        </div>
+      </div>
+
+      <form id="task-form">
+        <input type="hidden" id="task-id">
+
+        <div class="form-grid">
+          <label class="field field-full">
+            <span>Título <b>*</b></span>
+            <input id="title" name="title" type="text" maxlength="120" placeholder="Ex.: Estudar JavaScript" required>
+          </label>
+
+          <label class="field field-full">
+            <span>Descrição</span>
+            <textarea id="description" name="description" rows="3" placeholder="Descreva a tarefa..."></textarea>
+          </label>
+
+          <label class="field">
+            <span>Data prevista <b>*</b></span>
+            <input id="dueDate" name="dueDate" type="date" required>
+          </label>
+
+          <label class="field">
+            <span>Status</span>
+            <select id="status" name="status">
+              <option value="Pendente">Pendente</option>
+              <option value="Concluída">Concluída</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="form-error" class="message error hidden"></div>
+
+        <div class="form-actions">
+          <button id="cancel-edit" class="button secondary hidden" type="button">Cancelar edição</button>
+          <button class="button primary" type="submit">Salvar tarefa</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel tasks-panel">
+      <div class="panel-heading tasks-heading">
+        <div>
+          <h2>Tarefas</h2>
+          <p id="task-subtitle">Carregando...</p>
+        </div>
+        <div class="search-box">
+          <span>⌕</span>
+          <input id="search" type="search" placeholder="Pesquisar tarefas..." aria-label="Pesquisar tarefas">
+        </div>
+      </div>
+
+      <div id="list-message" class="message hidden"></div>
+      <div id="tasks-list" class="tasks-list"></div>
+    </section>
+  </main>
+
+  <template id="task-template">
+    <article class="task-card">
+      <div class="task-main">
+        <div class="task-title-row">
+          <h3 class="task-title"></h3>
+          <span class="status-badge"></span>
+        </div>
+        <p class="task-description"></p>
+        <div class="task-meta">
+          <span class="task-date"></span>
+        </div>
+      </div>
+      <div class="task-actions">
+        <button class="icon-button edit-button" type="button">Editar</button>
+        <button class="icon-button danger delete-button" type="button">Excluir</button>
+      </div>
+    </article>
+  </template>
+
+  <script src="/script.js"></script>
+</body>
+</html>
